@@ -14,26 +14,22 @@ To retrieve a listing of upcoming concerts from a specific band/artist enter:
 
 ``` node liri.js concert-this <enter in specific band/artist>```
 
-![Image of concert-this command](screenshots/concert-this.png)
+![concert_this](https://user-images.githubusercontent.com/49252572/60622208-b4d0da00-9dad-11e9-8b0a-57dcf25aabe2.png)
 
 To retrieve song info from your favorite track enter:
 
 ``` node liri.js spotify-this-song <enter song>```
 
-![Image of concert-this command](screenshots/spotify-this-song.png)
+![spotify_this_song](https://user-images.githubusercontent.com/49252572/60622233-c1553280-9dad-11e9-9fa4-edfd5f961ef5.png)
 
 To retrieve movie info from your favorite film enter:
 
 ``` node liri.js movie-this <enter movie name>```
 
-![Image of concert-this command](screenshots/movie-this.png)
+![movie_this](https://user-images.githubusercontent.com/49252572/60622243-cade9a80-9dad-11e9-8f1b-2bb448de3ccd.png)
 
-Bonous command below. Enter and see what it does:
+To retrieve command do this:
 
 ``` node liri.js do-what-it-says```
 
-<<<<<<< HEAD
-![Image of concert-this command](screenshots/do-what-it-says.png)
-=======
-![Image of concert-this command](screenshots/do-what-it-says.png)
->>>>>>> f8ca4194394233eaadb910e8d5a264cc36bac978
+![do-what-it-says](https://user-images.githubusercontent.com/49252572/60622251-d336d580-9dad-11e9-9cf0-caf1b2f407d2.png)
