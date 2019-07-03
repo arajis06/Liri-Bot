@@ -1,4 +1,4 @@
-# Liri Bot
+# Liri-Node-App
 ### Overview
 
 LIRI is a command line node app that takes in parameters and gives you back data. This app uses the axios NODE package to retrieve data from Bands in Town, OMDB APIs. 
