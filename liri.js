@@ -43,25 +43,36 @@ switch (command) {
 
 //FUNCTION Bands In Town================================================================================
 function concertThis(artist) {
+    
+    //URL that graps BANDS IN TOWN API + artist name + event info 
     var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
     // Running the request with Axios module on a URL with a JSON
     axios.get(queryUrl)
     .then(function(response) { 
-        for (var i = 0; i < response.data.length; i++) {
-
-            var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
-            var concertResults =
-            "-----------------**Concert Info**-----------------" +
-            "\nVenue Name: " + response.data[i].venue.name +
-            "\nVenue Location: " + response.data[i].venue.city +
-            "\nEvent Date: " + eventDate +
-            "\n--------------------------------------------------";
-            console.log(concertResults);
-        }
+        //Formatting the Date of the event
+        var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
+        //Grouping the results in a variable to log out
+        var concertResults =
+        "\n----------------**Concert Info**---------------\n" +
+        "\nArtist: " + artist +
+        "\nVenue Name: " + response.data[0].venue.name +
+        "\nVenue Location: " + response.data[0].venue.city +
+        "\nEvent Date: " + eventDate +
+        "\n-----------------------------------------------\n";
+        console.log(concertResults);
+        //Appending the results to log.txt file to track input
+        fs.appendFile("log.txt", concertResults, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log("Results have been logged!" + "\n===============================================");
+            }
+        })
     })
     .catch(function(error) {
-        console.log(error);
+        console.log("*******NO UPCOMING EVENTS*******");
     });
 }
 //==========================================================================================================
@@ -78,20 +89,27 @@ function spotifyThisSong(song) {
         limit: 5 
     })
     .then(function(response) {
-        for (var i = 0; i < 5; i++) {
             
-            var spotifyResults = 
-            "----------------**Song Info**-----------------" +
-            "\nArtist: " + response.tracks.items[i].album.artists[0].name +
-            "\nTrack: " + response.tracks.items[i].name +
-            "\nAlbum: " + response.tracks.items[i].album.name +
-            "\nPreview URL: " + response.tracks.items[i].preview_url +
-            "\n--------------------------------------------";
-            console.log(spotifyResults);
-        }
+        var spotifyResults = 
+        "\n------------------**Song Info**---------------\n" +
+        "\nArtist: " + response.tracks.items[0].album.artists[0].name +
+        "\nTrack: " + response.tracks.items[0].name +
+        "\nAlbum: " + response.tracks.items[0].album.name +
+        "\nPreview URL: " + response.tracks.items[0].preview_url +
+        "\n-----------------------------------------------\n";
+        console.log(spotifyResults);
+
+        fs.appendFile("log.txt", spotifyResults, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log("Results have been logged!" + "\n===============================================");
+            }
+        })
     })
     .catch(function(error) {
-        console.log(error);
+        console.log("*******SONG NOT FOUND*******");
     });    
 }
 //==========================================================================================================
@@ -100,9 +118,9 @@ function spotifyThisSong(song) {
 function movieThis(movie) {
     if(!movie) {
         movie = 'Mr. Nobody';
-        console.log("-------------**Check Out This Movie**------------")
+        console.log("-------------**Check Out This Movie!**------------\n")
         console.log("If you haven't watched " + movie + ", then you should: http://www.imdb.com/title/tt0485947/" + 
-        "\nIt's on NetFlix!" + "\n----------------------------------------------");
+        "\n>>>>>>> It's on NetFlix!" + "\n---------------------------------------------\n");
      };
 
      var queryUrl = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
@@ -111,21 +129,30 @@ function movieThis(movie) {
      axios.get(queryUrl)
      .then(function(response) { 
  
-             var movieResults =
-             "-----------------**Movie Info**-----------------" +
-             "\nTitle: " + response.data.Title +
-             "\nYear Released: " + response.data.Year +
-             "\nImdb Rating: " + response.data.imdbRating +
-             "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value +
-             "\nCountry Produced: " + response.data.Country +
-             "\nLanguage: " + response.data.Language +
-             "\nPlot: " + response.data.Plot +
-             "\nActors/Actresses: " + response.data.Actors +
-             "\n-------------------------------------------------";
-             console.log(movieResults);
+        var movieResults =
+        "\n------------------**Movie Info**---------------\n" +
+        "\nTitle: " + response.data.Title +
+        "\nYear Released: " + response.data.Year +
+        "\nImdb Rating: " + response.data.imdbRating +
+        "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value +
+        "\nCountry Produced: " + response.data.Country +
+        "\nLanguage: " + response.data.Language +
+        "\nPlot: " + response.data.Plot +
+        "\nActors/Actresses: " + response.data.Actors +
+        "\n-----------------------------------------------\n";
+        console.log(movieResults);
+
+        fs.appendFile("log.txt", movieResults, function(err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log("Results have been logged!" + "\n===============================================");
+            }
+        })
      })
     .catch(function(error) {
-        console.log(error);
+        console.log("******MOVIE NOT FOUND*******");
     });    
 }
 //==========================================================================================================
@@ -136,9 +163,12 @@ function doThis() {
         if (error) {
             return console.log(error);
         }
+        // We will then print the contents of data
+        console.log(data);
+
 
         var dataArray = data.split(",");
-        spotifyThisSong(dataArray[0], dataArray[1]);
+        spotifyThisSong(dataArray[1]);
     });
 }
 //==========================================================================================================
