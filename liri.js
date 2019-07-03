@@ -48,17 +48,15 @@ function concertThis(artist) {
     // Running the request with Axios module on a URL with a JSON
     axios.get(queryUrl)
     .then(function(response) { 
-        for (var i = 0; i < response.data.length; i++) {
 
             var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY');
             var concertResults =
             "-----------------**Concert Info**-----------------" +
-            "\nVenue Name: " + response.data[i].venue.name +
-            "\nVenue Location: " + response.data[i].venue.city +
+            "\nVenue Name: " + response.data[0].venue.name +
+            "\nVenue Location: " + response.data[0].venue.city +
             "\nEvent Date: " + eventDate +
             "\n--------------------------------------------------";
             console.log(concertResults);
-        }
     })
     .catch(function(error) {
         console.log(error);
@@ -78,17 +76,15 @@ function spotifyThisSong(song) {
         limit: 5 
     })
     .then(function(response) {
-        for (var i = 0; i < 5; i++) {
-            
+        
             var spotifyResults = 
             "----------------**Song Info**-----------------" +
-            "\nArtist: " + response.tracks.items[i].album.artists[0].name +
-            "\nTrack: " + response.tracks.items[i].name +
-            "\nAlbum: " + response.tracks.items[i].album.name +
-            "\nPreview URL: " + response.tracks.items[i].preview_url +
+            "\nArtist: " + response.tracks.items[0].artists[0].name +
+            "\nTrack: " + response.tracks.items[0].name +
+            "\nAlbum: " + response.tracks.items[0].album.name +
+            "\nPreview URL: " + response.tracks.items[0].preview_url +
             "\n--------------------------------------------";
             console.log(spotifyResults);
-        }
     })
     .catch(function(error) {
         console.log(error);
@@ -136,6 +132,9 @@ function doThis() {
         if (error) {
             return console.log(error);
         }
+        // We will then print the contents of data
+        console.log(data);
+
 
         var dataArray = data.split(",");
         spotifyThisSong(dataArray[0], dataArray[1]);
