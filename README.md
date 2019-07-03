@@ -32,4 +32,8 @@ Bonous command below. Enter and see what it does:
 
 ``` node liri.js do-what-it-says```
 
+<<<<<<< HEAD
 ![Image of concert-this command](screenshots/do-what-it-says.png)
+=======
+![Image of concert-this command](screenshots/do-what-it-says.png)
+>>>>>>> f8ca4194394233eaadb910e8d5a264cc36bac978
