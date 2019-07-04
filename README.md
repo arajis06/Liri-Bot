@@ -10,6 +10,10 @@ LIRI is a command line node app that takes in parameters and gives you back data
 - DotEnv
 - Moment
 
+Video Link of Live Coding:
+
+https://drive.google.com/open?id=156Sd_hBYRbKxDOKfZ8PoenbY952YSBkg
+
 To retrieve a listing of upcoming concerts from a specific band/artist enter:
 
 ``` node liri.js concert-this <enter in specific band/artist>```
