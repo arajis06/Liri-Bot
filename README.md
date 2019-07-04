@@ -1,4 +1,4 @@
-# Liri Bot
+# Liri-Node-App
 ### Overview
 
 LIRI is a command line node app that takes in parameters and gives you back data. This app uses the axios NODE package to retrieve data from Bands in Town, OMDB APIs. 
@@ -9,6 +9,10 @@ LIRI is a command line node app that takes in parameters and gives you back data
 - Axios
 - DotEnv
 - Moment
+
+Video Link of Live Coding:
+
+https://drive.google.com/open?id=156Sd_hBYRbKxDOKfZ8PoenbY952YSBkg
 
 To retrieve a listing of upcoming concerts from a specific band/artist enter:
 
@@ -28,8 +32,7 @@ To retrieve movie info from your favorite film enter:
 
 ![movie_this](https://user-images.githubusercontent.com/49252572/60622243-cade9a80-9dad-11e9-8f1b-2bb448de3ccd.png)
 
-
- To retrieve text from the random.txt file enter:
+To retrieve command do this:
 
 ``` node liri.js do-what-it-says```
 
